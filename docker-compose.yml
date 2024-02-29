@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  backend-auth-user:
+    image: backend-auth-user:latest
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        NODE_ENV: ${NODE_ENV}
+        PORT: ${PORT_DOCKER}
+    container_name: backend-auth-user
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/etc/timezone:/etc/timezone:ro'
+    restart: always
+    ports:  
+      - ${PORT_DOCKER}:${PORT_DOCKER}  
+    env_file:  
+      - .env  
