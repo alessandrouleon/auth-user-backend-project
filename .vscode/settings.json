@@ -1,9 +1,10 @@
 {
-    "material-icon-theme-simon.folders.associations": {
+    "material-icon-theme.folders.associations": {
         "dtos": "include",
         "entities": "resource",
-        "adapters": "pipe",
-        "repositories": "Redux-store"
+        "gateways": "pipe",
+        "repositories": "Redux-store",
+        "useCases": "Ngrx-reducer"
     }
 }
 

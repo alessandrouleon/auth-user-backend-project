@@ -13,13 +13,13 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id        String    @id @default(uuid())
+model User {
+  id    String    @id @default(uuid())
   name      String    @db.VarChar(64)
   username  String    @unique @db.VarChar(64)
   email     String    @unique @db.VarChar(256)
   password  String    @db.VarChar(256)
   createdAt DateTime  @default(dbgenerated("NOW()")) @db.DateTime
-  updatedAt DateTime?
-  deletedAt DateTime?
+  updatedAt DateTime? @db.DateTime
+  deletedAt DateTime? @db.DateTime
 }
