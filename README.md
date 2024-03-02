@@ -1,10 +1,14 @@
 ### REGRA DE NEGÓCIOS
 ### Módulo de usuários.
 ##### [x] Deve ser possível cadastrar usuário.
+##### [x] Não permitir cadastrar usuário com campo vazio.
+##### [x] Implementar e criptografar a senha na criação.
+##### [x] Usuário e e-mail devem ser únicos na criação.
+
 ##### [] Deve ser possível editar usuário.
-##### [] Implementar e criptografar a senha na criação e edição.
-##### [] Usuário e e-mail devem ser únicos.
-##### [] Não permitir cadastrar ou editar usuário com campo vazio.
+##### [] Implementar e criptografar a senha na edição.
+##### [] Usuário e e-mail devem ser únicos na edição.
+##### [] Não permitir editar usuário com campo vazio.
 ##### [] Deve ser possível deletar usuário.
 
 ##### [] Deve ser possível listar usuário.
