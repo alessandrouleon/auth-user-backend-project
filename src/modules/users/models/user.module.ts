@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { UserController } from '../controllers/user.controller';
-import { CreateUserUseCase } from '../services/create-user.service';
-import { UserRepository } from '../repositories/user.repository';
+import { UsersController } from '../controllers/users.controller';
+import { CreateUserUseCase } from '../usecases/create-user.useCase';
+import { UsersRepository } from '../repositories/users.repository';
 
 @Module({
-  controllers: [UserController],
+  controllers: [UsersController],
   exports: [
     CreateUserUseCase,
    
@@ -12,8 +12,8 @@ import { UserRepository } from '../repositories/user.repository';
   providers: [
     CreateUserUseCase,
     {
-      provide: 'UserRepositoryContract',
-      useClass: UserRepository,
+      provide: 'UsersRepositoryContract',
+      useClass: UsersRepository,
     },
   ],
 })

@@ -13,10 +13,10 @@ import {
   
   import { CreateUserDto } from '../dtos/create-user.dto';
  
-  import { CreateUserUseCase } from '../services/create-user.service';
+  import { CreateUserUseCase } from '../usecases/create-user.useCase';
 
-  @Controller('user')
-  export class UserController {
+  @Controller('users')
+  export class UsersController {
     constructor(
       private readonly createUserUseCase: CreateUserUseCase,
 

@@ -22,4 +22,5 @@ model User {
   createdAt DateTime  @default(dbgenerated("NOW()")) @db.DateTime
   updatedAt DateTime? @db.DateTime
   deletedAt DateTime? @db.DateTime
+  @@map("users")
 }

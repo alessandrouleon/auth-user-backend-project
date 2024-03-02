@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { UserEntity } from '../entities/user.entity';
-import { UserRepositoryContract } from '../repositories/user.repository.contract';
+import { UsersRepositoryContract } from '../repositories/users.repository.contract';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UserMessagesHelper } from 'src/utils/messages.helps';
 import * as bcrypt from 'bcrypt'
@@ -8,8 +8,8 @@ import * as bcrypt from 'bcrypt'
 @Injectable()
 export class CreateUserUseCase {
   constructor(
-    @Inject('UserRepositoryContract')
-    private userRepository: UserRepositoryContract) { }
+    @Inject('UsersRepositoryContract')
+    private userRepository: UsersRepositoryContract) { }
 
   async execute(data: CreateUserDto): Promise<UserEntity> {
 
