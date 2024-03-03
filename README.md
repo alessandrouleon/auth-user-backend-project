@@ -5,10 +5,11 @@
 ##### [x] Implementar e criptografar a senha na criação.
 ##### [x] Usuário e e-mail devem ser únicos na criação.
 
-##### [] Deve ser possível editar usuário.
-##### [] Implementar e criptografar a senha na edição.
-##### [] Usuário e e-mail devem ser únicos na edição.
-##### [] Não permitir editar usuário com campo vazio.
+##### [x] Deve ser possível editar usuário.
+##### [x] Implementar e criptografar a senha na edição.
+##### [x] Usuário e e-mail devem ser únicos na edição.
+##### [x] Não permitir editar usuário com campo vazio.
+
 ##### [] Deve ser possível deletar usuário.
 
 ##### [] Deve ser possível listar usuário.

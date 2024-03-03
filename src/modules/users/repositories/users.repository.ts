@@ -15,7 +15,7 @@ export class UsersRepository implements UsersRepositoryContract {
 
   async updateUser(id: string, data: UpdateUserDto): Promise<UserEntity | null> {
     return this.repository.user.update({
-      where: {id},
+      where: { id },
       data
     });
   }
@@ -33,5 +33,12 @@ export class UsersRepository implements UsersRepositoryContract {
     });
     return findEmail;
   }
+
+  async findByUserId(id: string): Promise<UserEntity> {
+    return await this.repository.user.findUnique({
+      where: { id, deletedAt: null}
+    })
+  }
+
 
 }
