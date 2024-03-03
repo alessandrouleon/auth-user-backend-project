@@ -8,7 +8,5 @@ import { UserModule } from './modules/users/models/user.module';
     PrismaModule,
     UserModule
   ], 
-  // controllers: [],
-  // providers: [],
 })
 export class AppModule {}

@@ -1,4 +1,3 @@
-import { getUtcDate } from "src/utils/date";
 import { randomUUID as uuid } from "crypto";
 
 export class UserEntity {
@@ -10,10 +9,9 @@ export class UserEntity {
      createdAt: Date;
      updatedAt: Date;
      deletedAt: Date;
-
-    constructor(props: Omit<UserEntity, 'id' | 'createdAt'>, id?: string) {
+   
+    constructor(props: Omit<UserEntity, 'id'>, id?: string) {
         Object.assign(this, props);
-        this.id = id ?? uuid();
-        this.createdAt = getUtcDate();  
+        this.id = id ?? uuid();    
     }
 }

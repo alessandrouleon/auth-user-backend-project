@@ -28,5 +28,6 @@ export class CreateUserDto {
   password: string;
 
   updatedAt?: Date;
+  deletedAt?: Date;
 }
 

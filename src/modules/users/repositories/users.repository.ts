@@ -3,6 +3,7 @@ import { UsersRepositoryContract } from './users.repository.contract';
 import { UserEntity } from '../entities/user.entity';
 import { PrismaService } from 'src/gateways/prisma/prisma.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
+import { UpdateUserDto } from '../dtos/update-user.dto';
 
 @Injectable()
 export class UsersRepository implements UsersRepositoryContract {
@@ -10,6 +11,13 @@ export class UsersRepository implements UsersRepositoryContract {
 
   async createUser(data: CreateUserDto): Promise<UserEntity | null> {
     return await this.repository.user.create({ data })
+  }
+
+  async updateUser(id: string, data: UpdateUserDto): Promise<UserEntity | null> {
+    return this.repository.user.update({
+      where: {id},
+      data
+    });
   }
 
   async findByUsername(username: string): Promise<UserEntity | null> {

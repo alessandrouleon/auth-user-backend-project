@@ -22,8 +22,7 @@ export class CreateUserUseCase {
     const saveUser = await this.userRepository.createUser({
       ...data,
       password: hashedUserPassword,
-    });
-
+    });   
     return saveUser;
   }
 
