@@ -8,5 +8,6 @@ export interface UsersRepositoryContract {
   findByUsername(username: string): Promise<UserEntity | null>;
   findByEmail(email: string): Promise<UserEntity | null>;
   findByUserId(id: string): Promise<UserEntity | null>;
+  deleteUser(id: string, data: UpdateUserDto): Promise<void>;
 }
  

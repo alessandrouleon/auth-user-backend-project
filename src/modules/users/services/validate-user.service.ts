@@ -3,7 +3,7 @@ import { UsersRepositoryContract } from "../repositories/users.repository.contra
 import { UserMessagesHelper } from "src/utils/messages.helps";
 
 @Injectable()
-export class UserValidateService {
+export class ValidateUserService {
     constructor(
         @Inject('UsersRepositoryContract')
         private repository: UsersRepositoryContract) { }

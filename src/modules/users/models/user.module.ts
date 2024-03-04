@@ -3,7 +3,8 @@ import { UsersController } from '../controllers/users.controller';
 import { CreateUserUseCase } from '../usecases/create-user.useCase';
 import { UsersRepository } from '../repositories/users.repository';
 import { UpdateUserUseCase } from '../usecases/update-user.useCase';
-import { UserValidateService } from '../services/user-validate.service';
+import { ValidateUserService } from '../services/validate-user.service';
+import { DeleteUserUseCase } from '../usecases/delete-user.useCase';
 
 @Module({
   controllers: [UsersController],
@@ -11,7 +12,8 @@ import { UserValidateService } from '../services/user-validate.service';
   providers: [
     CreateUserUseCase,
     UpdateUserUseCase,
-    UserValidateService,
+    DeleteUserUseCase,
+    ValidateUserService,
     {
       provide: 'UsersRepositoryContract',
       useClass: UsersRepository,

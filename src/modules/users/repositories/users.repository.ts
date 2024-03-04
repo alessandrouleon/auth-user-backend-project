@@ -39,6 +39,13 @@ export class UsersRepository implements UsersRepositoryContract {
       where: { id, deletedAt: null}
     })
   }
+ 
 
+  async deleteUser(id: string, data: UpdateUserDto): Promise<void> {
+   await this.repository.user.updateMany({
+      where: {id},
+      data
+     })
+  }
 
 }

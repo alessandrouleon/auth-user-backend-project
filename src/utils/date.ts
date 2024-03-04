@@ -1,6 +1,6 @@
 import { formatToTimeZone } from 'date-fns-timezone';
 
-export const updatedAt = (): Date => {
+export const newDate = (): Date => {
 
     const currentDate = new Date();
     const targetTimeZone = 'America/Manaus';

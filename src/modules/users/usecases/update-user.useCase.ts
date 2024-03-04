@@ -2,17 +2,17 @@ import { HttpException, HttpStatus, Inject, Injectable } from "@nestjs/common";
 import { UserEntity } from "../entities/user.entity";
 import { UpdateUserDto } from "../dtos/update-user.dto";
 import { UsersRepositoryContract } from "../repositories/users.repository.contract";
-import { updatedAt } from "src/utils/date";
+import { newDate } from "src/utils/date";
 import * as bcrypt from 'bcrypt';
 import { UserMessagesHelper } from "src/utils/messages.helps";
-import { UserValidateService } from "../services/user-validate.service";
+import { ValidateUserService } from "../services/validate-user.service";
 
 @Injectable()
 export class UpdateUserUseCase {
     constructor(
         @Inject('UsersRepositoryContract')
         private usersRepository: UsersRepositoryContract,
-        private userService: UserValidateService
+        private userService: ValidateUserService
     ) { }
 
     async update(id: string, data: UpdateUserDto): Promise<UserEntity> {
@@ -37,7 +37,7 @@ export class UpdateUserUseCase {
 
         return await this.usersRepository.updateUser(id, {
             ...data,
-            updatedAt: updatedAt(),
+            updatedAt: newDate(),
             password: hashedPassword,
         });
     }

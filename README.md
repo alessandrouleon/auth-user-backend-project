@@ -9,8 +9,10 @@
 ##### [x] Implementar e criptografar a senha na edição.
 ##### [x] Usuário e e-mail devem ser únicos na edição.
 ##### [x] Não permitir editar usuário com campo vazio.
+##### [] Não deve ser possível editar usuário admin.
 
-##### [] Deve ser possível deletar usuário.
+##### [x] Deve ser possível deletar usuário.
+##### [] Não deve ser possível deletar usuário admin.
 
 ##### [] Deve ser possível listar usuário.
 ##### [] Deve ser possível pesquisar usuário.
