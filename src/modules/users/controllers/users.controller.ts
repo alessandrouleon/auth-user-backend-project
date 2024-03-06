@@ -18,7 +18,7 @@ import { UpdateUserDto } from '../dtos/update-user.dto';
 import { UpdateUserUseCase } from '../usecases/update-user.useCase';
 import { DeleteUserUseCase } from '../usecases/delete-user.useCase';
 import { SearchFilterTable } from 'src/utils/search-table';
-import { ListUserUseCase } from '../usecases/list-user.useCase';
+import { GetUserUseCase } from '../usecases/get-user.useCase';
 
   @Controller('users')
   export class UsersController {
@@ -26,7 +26,7 @@ import { ListUserUseCase } from '../usecases/list-user.useCase';
       private readonly createUserUseCase: CreateUserUseCase,
       private readonly updateUserUseCase: UpdateUserUseCase,
       private readonly deleteUserUseCase: DeleteUserUseCase,
-      private readonly listUserUseCase: ListUserUseCase
+      private readonly listUserUseCase: GetUserUseCase
     ) {}
   
     @Post()

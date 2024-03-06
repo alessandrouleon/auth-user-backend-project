@@ -7,7 +7,7 @@ import { UserEntity } from "../entities/user.entity";
 import { FilterTableMessagesHelper } from "src/utils/messages.helps";
 
 @Injectable()
-export class ListUserUseCase {
+export class GetUserUseCase {
     constructor(
         @Inject('UsersRepositoryContract')
         private repository: UsersRepositoryContract
