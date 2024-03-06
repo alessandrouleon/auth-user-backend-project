@@ -17,6 +17,8 @@ import {
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { UpdateUserUseCase } from '../usecases/update-user.useCase';
 import { DeleteUserUseCase } from '../usecases/delete-user.useCase';
+import { SearchFilterTable } from 'src/utils/search-table';
+import { ListUserUseCase } from '../usecases/list-user.useCase';
 
   @Controller('users')
   export class UsersController {
@@ -24,6 +26,7 @@ import { DeleteUserUseCase } from '../usecases/delete-user.useCase';
       private readonly createUserUseCase: CreateUserUseCase,
       private readonly updateUserUseCase: UpdateUserUseCase,
       private readonly deleteUserUseCase: DeleteUserUseCase,
+      private readonly listUserUseCase: ListUserUseCase
     ) {}
   
     @Post()
@@ -41,5 +44,12 @@ import { DeleteUserUseCase } from '../usecases/delete-user.useCase';
     remove(@Param('id') id: string) {
       return this.deleteUserUseCase.delete(id);
     }
-  
+
+    @Get('/search/:page')
+    async findBySearch(
+      @Param('page') page: number,
+      @Query() search: SearchFilterTable,
+    ) {
+      return this.listUserUseCase.getUsers(search, page);
+    }
 } 

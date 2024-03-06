@@ -14,3 +14,16 @@ export const UserMessagesHelper = {
     PASSWORD_VALID:
       'A senha deve conter letras maiúsculas e minúsculas, números e caracteres especiais',
   };
+
+  export const FilterTableMessagesHelper = {
+    LINES_LIST_WITH_IS_PAGINATED_MUST_BE_BOOLEAN:
+      '"isPaginated" deve ser do tipo: boolean',
+    LINES_LIST_WITH_COLUMN_IS_STRING: 'Coluna deve ser do tipo: string',
+    LINES_LIST_WITH_VALUE_IS_STRING: 'Valor deve ser do tipo: string',
+    EMPTY_COLUMN_FILTER:
+      'Preencha valores válidos para aplicar o filtro na coluna.',
+    EMPTY_VALUE_FILTER: 'Preencha valores válidos para filtra.',
+    NOT_EXISTS_COLUMN_AND_VALUE:
+      'Os campos (coluna) e (valor) devem ser vázios para que a listagem não seja páginada',
+  };
+  
