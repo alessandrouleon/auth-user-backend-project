@@ -4,8 +4,7 @@ import { UserEntity } from '../entities/user.entity';
 import { PrismaService } from 'src/gateways/prisma/prisma.service';
 import { CreateUserDto } from '../dtos/create-user.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
-import { ISearchWithColumn, PaginatedData } from 'src/utils/pagination';
-import { PaginatedUsersDTO } from '../dtos/paginated-users.dto';
+import { PaginatedData } from 'src/utils/pagination';
 
 @Injectable()
 export class UsersRepository implements UsersRepositoryContract {
@@ -49,51 +48,6 @@ export class UsersRepository implements UsersRepositoryContract {
     })
   }
 
-  // async findAll(): Promise<UserEntity[]> {
-  //   return await this.repository.user.findMany({
-  //     select: {
-  //       id: true,
-  //       name: true,
-  //       username: true,
-  //       email: true,
-  //       password: true,
-  //       createdAt: true,
-  //       updatedAt: true,
-  //       deletedAt: true
-  //     },
-  //     where: { deletedAt: null }
-  //   })
-  // }
-
-  async searchUsersCaseFormatDate(
-    { skip, take }: PaginatedData,
-    {
-      //  column, 
-       value }: ISearchWithColumn
-  ): Promise<IUsersReturnWithPagination> {
-    const user = await this.repository.user.findMany({
-      take,
-      skip,
-      orderBy: {
-        createdAt: 'desc',
-      },
-      select: {
-        id: true,
-        name: true,
-        username: true,
-        email: true,
-        password: true,
-        createdAt: true,
-        updatedAt: true,
-        deletedAt: true
-      },
-      // where: { 
-      //    [column]: value, deletedAt: null }
-    });
-    const [data, total] = [user, user.length];
-    return { users: data, total }
-  }
-
   async findAllUsersWithPagination(
     { page, take }: PaginatedData
   ): Promise<IUsersReturnWithPagination> {
@@ -110,24 +64,24 @@ export class UsersRepository implements UsersRepositoryContract {
     ]);
     return { users: data, total }
   }
-//avaliar
-  // public async findByUnifiedValueSearch(value: string): Promise<UserEntity[] | null> {
-  //   const user = await this.repository.user.findMany({
-  //     where: {
-  //       OR: [
-  //         {
-  //           name: { contains: value },
-  //         },
-  //         {
-  //           username: { contains: value },
-  //         },
-  //         {
-  //           email: { contains: value },
-  //         },
-  //       ],
-  //     },
-  //   });
-  //   return user;
 
-  // }
+  public async searchForAnyUsersValue(value: string): Promise<UserEntity[] | null> {
+    const user = await this.repository.user.findMany({
+      where: {
+        OR: [
+          {
+            name: { contains: value },
+          },
+          {
+            username: { contains: value },
+          },
+          {
+            email: { contains: value },
+          },
+        ],
+      },
+    });
+    return user;
+
+  }
 }
