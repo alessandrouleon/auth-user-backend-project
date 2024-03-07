@@ -33,7 +33,6 @@ export class GetUserUseCase {
         }
         if (value) {
             return this.getValuesInUsers(value);
-    
         }
 
     }

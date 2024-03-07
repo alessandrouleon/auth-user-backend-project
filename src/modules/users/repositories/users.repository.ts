@@ -79,6 +79,7 @@ export class UsersRepository implements UsersRepositoryContract {
             email: { contains: value },
           },
         ],
+        deletedAt: null
       },
     });
     return user;
