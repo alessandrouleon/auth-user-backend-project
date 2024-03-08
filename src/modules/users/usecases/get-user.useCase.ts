@@ -11,8 +11,12 @@ export class GetUserUseCase {
         private repository: UsersRepositoryContract
     ) { }
 
-    private async getValuesInUsers(value: string) {
-        return await this.repository.searchForAnyUsersValue(value);
+    private async getValuesInUsers(value: string, { skip, take, page }: PaginatedData) {
+        const {users, total} = await this.repository.findFilteredUsersWithPagination(value, {
+            skip, take, page
+        });
+        const goal = paginateResponse({ total, page, take });
+        return { users, ...goal }
     }
 
     private async getAllUserPaginated({ skip, take, page }: PaginatedData) {
@@ -28,13 +32,8 @@ export class GetUserUseCase {
     ): Promise<PaginatedUsersDTO | UserEntity[]> {
         const { skip, take, page } = getParametersToPaginate(pageNumber);
 
-        if (!value) {
-            return this.getAllUserPaginated({ page, skip, take });
-        }
-        if (value) {
-            return this.getValuesInUsers(value);
-        }
-
+        if (!value) return this.getAllUserPaginated({ page, skip, take });
+        if (value) return this.getValuesInUsers(value, { page, skip, take });   
     }
 
 }

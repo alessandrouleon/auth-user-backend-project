@@ -1,4 +1,3 @@
-
 export class SearchValueInColumn {
   value: string;
 }

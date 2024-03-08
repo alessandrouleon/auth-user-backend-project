@@ -65,24 +65,32 @@ export class UsersRepository implements UsersRepositoryContract {
     return { users: data, total }
   }
 
-  public async searchForAnyUsersValue(value: string): Promise<UserEntity[] | null> {
-    const user = await this.repository.user.findMany({
-      where: {
-        OR: [
-          {
-            name: { contains: value },
-          },
-          {
-            username: { contains: value },
-          },
-          {
-            email: { contains: value },
-          },
-        ],
-        deletedAt: null
-      },
-    });
-    return user;
-
+  public async findFilteredUsersWithPagination(value: string, { take, page }: PaginatedData,
+  ): Promise<IUsersReturnWithPagination> {
+    const [data] = await Promise.all([
+      this.repository.user.findMany({
+        take,
+        skip: (page - 1) * take,
+        orderBy: {
+          createdAt: 'desc',
+        },
+        where: {
+          OR: [
+            {
+              name: { contains: value },
+            },
+            {
+              username: { contains: value },
+            },
+            {
+              email: { contains: value },
+            },
+          ],
+          deletedAt: null
+        }
+      }),
+    ]);
+    const total = data.length;
+    return { users: data, total }
   }
 }
