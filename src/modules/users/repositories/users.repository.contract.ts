@@ -8,7 +8,6 @@ export interface IUsersReturnWithPagination {
   total: number;
 }
 
-
 export interface UsersRepositoryContract {
   createUser(data: CreateUserDto): Promise<UserEntity | null>;
   updateUser(id: string, data: UpdateUserDto): Promise<UserEntity | null>;
